@@ -26,18 +26,11 @@ export default class App extends Component {
     const { contacts } = this.state;
 
     if (
-      contacts.find(
-        contact => contact.name.toLowerCase() === name.toLowerCase(),
-      )
-    ) {
-      alert(`${name} is already in contacts.`);
-    } else if (contacts.find(contact => contact.number === number)) {
+      contacts.find( contact => contact.name === name)
+    ) {alert(`${name} is already in contacts.`);
+    }else if (contacts.find(contact => contact.number === number)) {
       alert(`${number} is already in contacts.`);
-    } else if (name.trim() === '' || number.trim() === '') {
-      alert("Enter the contact's name and number phone!");
-    } else if (!/\d{3}[-]\d{2}[-]\d{2}/g.test(number)) {
-      alert('Enter the correct number phone!');
-    } else {
+    }else {
       this.setState(({ contacts }) => ({
         contacts: [contact, ...contacts],
       }));
